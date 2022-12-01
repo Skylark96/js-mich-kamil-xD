@@ -33,14 +33,23 @@ function total(e) {
   const priceValue = Number(trElt.querySelector(".price").innerHTML);
   var totalTag = document.getElementById("total");
   var totalValue = Number(totalTag.innerHTML);
+  const btnPlus=checkBox.parentElement.parentElement.querySelector(".plus");
+  const btnMinus=checkBox.parentElement.parentElement.querySelector(".minus");
+
 if (checkBox.checked===true) {
-    totalValue+=priceValue
+    totalValue+=priceValue;
+    btnPlus.setAttribute("disabled", true)
+    btnMinus.setAttribute("disabled", true)
 }
 else{
-    totalValue-=priceValue
+    totalValue-=priceValue;
+    btnPlus.removeAttribute("disabled")
+    btnMinus.removeAttribute("disabled")
+
+
 }
 
-totalTag.innerHTML=totalValue
+totalTag.innerHTML=totalValue;
 
 
 
@@ -65,7 +74,10 @@ function decriment(e) {
 }
 function remove(e) {
   const del= e.target;
-  console.log(del)
+  console.log(del);
+  const trElt=del.parentElement.parentElement.parentElement.parentElement
+  console.log(trElt)
+  trElt.remove()
 }
 function like(e) {
   const btn = e.target;
